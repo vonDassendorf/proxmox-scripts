@@ -20,6 +20,8 @@ curl -sL https://raw.githubusercontent.com/vonDassendorf/proxmox-scripts/main/lx
 |--------------------|----------------------|--------------------------------------------------------|
 | --id          | $nextid                   | container id                                           |
 | --bridge      | vmbr0                     | bridge used for eth0                                   |
+| --ip			| dhcp						| IP CIDR of created container							 |
+| --gw			| ''						| Gateway of created container							 |
 | --cores       | 1                         | number of cpu cores                                    |
 | --disksize    | 2G                        | size of disk                                           |
 | --hostname    | nginx-proxy-manager       | hostname of the container                              |
