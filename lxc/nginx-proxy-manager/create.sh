@@ -31,10 +31,10 @@ function error {
 }
 
 # Base raw github URL
-_raw_base="https://raw.githubusercontent.com/ej52/proxmox-scripts/main/lxc/nginx-proxy-manager"
+_raw_base="https://raw.githubusercontent.com/vondassendorf/proxmox-scripts/main/lxc/nginx-proxy-manager"
 # Operating system
 _os_type=alpine
-_os_version=3.12
+_os_version=3.15
 # System architecture
 _arch=$(dpkg --print-architecture)
 
@@ -55,6 +55,14 @@ while [[ $# -gt 0 ]]; do
       _bridge=$2
       shift
       ;;
+	--ip)
+	  _ip_address=$2
+	  shift
+	  ;;
+	--gw)
+	  _gateway
+	  shift
+	  ;;
     --cores)
       _cpu_cores=$2
       shift
@@ -96,6 +104,8 @@ _cpu_cores=${_cpu_cores:-1}
 _disk_size=${_disk_size:-2G}
 _host_name=${_host_name:-nginx-proxy-manager}
 _bridge=${_bridge:-vmbr0}
+_ip_address=${_ip_address:-dhcp}
+_gateway=${_gateway:}
 _memory=${_memory:-512}
 _swap=${_swap:-0}
 _storage=${_storage:-local-lvm}
@@ -118,6 +128,8 @@ warn "memory:   $_memory"
 warn "swap:     $_swap"
 warn "disksize: $_disk_size"
 warn "bridge:   $_bridge"
+warn "ip-address:  $_ip_address"
+warn "gateway:	$_gateway"
 warn "storage:  $_storage"
 warn "templates:  $_storage_template"
 warn ""
@@ -172,7 +184,7 @@ _pct_options=(
   -hostname $_host_name
   -cores $_cpu_cores
   -memory $_memory
-  -net0 name=eth0,bridge=$_bridge,ip=dhcp
+  -net0 name=eth0,bridge=$_bridge,ip=$_ip_address,gw=$_gateway
   -onboot 1
   -ostype $_os_type
   -rootfs $_rootfs,size=$_disk_size
