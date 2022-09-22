@@ -12,7 +12,7 @@ To create a new LXC container on Proxmox and setup Nginx Proxy Manager to run in
 ***Note:*** _This will create alpine container_
 
 ```bash
-curl -sL https://raw.githubusercontent.com/vondassendorf/proxmox/main/lxc/nginx-proxy-manager/create.sh | bash -s
+curl -sL https://raw.githubusercontent.com/vonDassendorf/proxmox-scripts/main/lxc/nginx-proxy-manager/create.sh | bash -s
 ```
 
 ### Command line arguments
@@ -31,7 +31,7 @@ curl -sL https://raw.githubusercontent.com/vondassendorf/proxmox/main/lxc/nginx-
 you can set these parameters by appending ` -- <parameter> <value>` like:
 
 ```bash
-curl -sL https://raw.githubusercontent.com/vondassendorf/proxmox/main/lxc/nginx-proxy-manager/create.sh | bash -s -- --cores 4
+curl -sL https://raw.githubusercontent.com/vonDassendorf/proxmox-scripts/main/lxc/nginx-proxy-manager/create.sh | bash -s -- --cores 4
 ```
 
 ### Console
@@ -46,7 +46,7 @@ If you are not using proxmox or want to install this on a existing Alpine box, y
 ***Note:*** _Only Alpine, Debian and Ubuntu are currently supported by this script_
 
 ```bash
-wget --no-cache -qO - https://raw.githubusercontent.com/vondassendorf/proxmox/main/lxc/nginx-proxy-manager/setup.sh | sh
+wget --no-cache -qO - https://raw.githubusercontent.com/vonDassendorf/proxmox-scripts/main/lxc/nginx-proxy-manager/setup.sh | sh
 ```
 
 ## Thanks

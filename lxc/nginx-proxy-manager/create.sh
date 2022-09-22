@@ -55,14 +55,14 @@ while [[ $# -gt 0 ]]; do
       _bridge=$2
       shift
       ;;
-	--ip)
-	  _ip_address=$2
-	  shift
-	  ;;
-	--gw)
-	  _gateway
-	  shift
-	  ;;
+    --ip)
+      _ip_address=$2
+      shift
+      ;;
+    --gw)
+      _gateway=$2
+      shift
+      ;;
     --cores)
       _cpu_cores=$2
       shift
@@ -105,7 +105,7 @@ _disk_size=${_disk_size:-2G}
 _host_name=${_host_name:-nginx-proxy-manager}
 _bridge=${_bridge:-vmbr0}
 _ip_address=${_ip_address:-dhcp}
-_gateway=${_gateway:}
+_gateway=${_gateway:''}
 _memory=${_memory:-512}
 _swap=${_swap:-0}
 _storage=${_storage:-local-lvm}
